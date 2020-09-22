@@ -1,0 +1,26 @@
+{
+    "name": "@juyren/library-cli",
+    "version": "1.0.0",
+    "description": "开发javascript工具库的脚手架",
+    "main": "lib/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JuyRen/library-cli.git"
+    },
+    "keywords": [
+        "tool",
+        "library",
+        "cli",
+        "javascript",
+        "typescript"
+    ],
+    "author": "JuyRen",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/JuyRen/library-cli/issues"
+    },
+    "homepage": "https://github.com/JuyRen/library-cli#readme"
+}
