@@ -3,9 +3,7 @@
     "version": "1.0.0",
     "description": "开发javascript工具库的脚手架",
     "main": "lib/index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
+    "scripts": {},
     "repository": {
         "type": "git",
         "url": "git+https://github.com/JuyRen/library-cli.git"
@@ -22,5 +20,12 @@
     "bugs": {
         "url": "https://github.com/JuyRen/library-cli/issues"
     },
-    "homepage": "https://github.com/JuyRen/library-cli#readme"
+    "homepage": "https://github.com/JuyRen/library-cli#readme",
+    "dependencies": {
+        "chalk": "^4.1.0",
+        "commander": "^6.1.0"
+    },
+    "bin": {
+        "library-cli": "./bin/index.js"
+    }
 }
