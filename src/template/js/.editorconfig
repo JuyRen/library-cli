@@ -1,0 +1,10 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 4 # index_style = space时, 使用该配置
+tab_width = 4 # index_style = tab时, 使用该配置
+end_of_line = lf
+# 本地setting.json中的配置会覆盖下面两个配置
+insert_final_newline = true
+trim_trailing_whitespace = true

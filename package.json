@@ -2,7 +2,7 @@
     "name": "@juyren/library-cli",
     "version": "1.0.0",
     "description": "开发javascript工具库的脚手架",
-    "main": "lib/index.js",
+    "main": "src/index.js",
     "scripts": {},
     "repository": {
         "type": "git",
@@ -23,7 +23,8 @@
     "homepage": "https://github.com/JuyRen/library-cli#readme",
     "dependencies": {
         "chalk": "^4.1.0",
-        "commander": "^6.1.0"
+        "commander": "^6.1.0",
+        "fs-extra": "^9.0.1"
     },
     "bin": {
         "library-cli": "./bin/index.js"
