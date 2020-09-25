@@ -5,7 +5,7 @@
     - 如果`projectName`为空,终止进程
     - 如果`projectName`已存在, 终止进程
     - 如果`projectName`校验通过, 创建新文件夹
-3. 解析`--template`, 拷贝不同的模板代码
+3. 解析`--template`, 使用`fs-extra`拷贝不同的模板代码
 
 ## Commander
 

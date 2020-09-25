@@ -1,4 +1,4 @@
-const templatesRef = {
+module.exports = {
     javascript: {
         fullName: 'javascript',
         alias: 'js'
@@ -7,8 +7,4 @@ const templatesRef = {
         fullName: 'typescript',
         alias: 'ts'
     }
-};
-
-module.exports = {
-    templatesRef
 };

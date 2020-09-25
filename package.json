@@ -24,9 +24,17 @@
     "dependencies": {
         "chalk": "^4.1.0",
         "commander": "^6.1.0",
-        "fs-extra": "^9.0.1"
+        "download-git-repo": "^3.0.2",
+        "fs-extra": "^9.0.1",
+        "ora": "^5.1.0"
     },
     "bin": {
         "library-cli": "./bin/index.js"
+    },
+    "devDependencies": {
+        "eslint": "^7.9.0",
+        "eslint-config-airbnb-base": "^14.2.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-import": "^2.22.0"
     }
 }
