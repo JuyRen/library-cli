@@ -1,6 +1,6 @@
 {
     "name": "@juyren/library-cli",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "开发javascript工具库的脚手架",
     "main": "lib/index.js",
     "scripts": {
