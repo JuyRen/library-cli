@@ -4,15 +4,20 @@ const { chalkError } = require('./script/util');
 const {
     getDestination,
     getTemplate,
-    downloadRepo
+    quiz,
+    downloadRepo,
+    replacePlaceholder
 } = require('./script/process');
 
 async function run() {
     const { projectName } = createCommander();
     const templateConfig = getTemplate();
     const destination = await getDestination(projectName);
+    const answers = await quiz(projectName);
 
-    downloadRepo(templateConfig, destination);
+    await downloadRepo(templateConfig, destination);
+
+    replacePlaceholder(answers, destination);
 }
 
 run().catch(err => {
