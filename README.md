@@ -1,11 +1,5 @@
 # 工具库开发脚手架
 
-## TODO
-
-1. 对该项目进行 rollup
-2. 完成 template 模板
-3. 对 javascript 模板优化
-
 ## 用法
 
 1. 使用 npx 安装

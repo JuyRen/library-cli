@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const ora = require('ora');
 
 const spinner = ora();
+spinner.color = 'yellow';
 
 function resolve(...urls) {
     return path.resolve(...urls);
