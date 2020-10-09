@@ -25,9 +25,9 @@
     },
     "homepage": "https://github.com/JuyRen/library-cli#readme",
     "dependencies": {
-        "@babel/runtime-corejs3": "^7.11.2",
         "chalk": "^4.1.0",
         "commander": "^6.1.0",
+        "core-js": "^3.6.5",
         "download-git-repo": "^3.0.2",
         "fs-extra": "^9.0.1",
         "inquirer": "^7.3.3",
@@ -38,7 +38,6 @@
     },
     "devDependencies": {
         "@babel/core": "^7.11.6",
-        "@babel/plugin-transform-runtime": "^7.11.5",
         "@babel/preset-env": "^7.11.5",
         "@rollup/plugin-babel": "^5.2.1",
         "@rollup/plugin-commonjs": "^15.1.0",
