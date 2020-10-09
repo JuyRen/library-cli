@@ -6,4 +6,3 @@ test
 /.gitignore
 /.prettierignore
 /.prettierrc
-/.package-lock.json

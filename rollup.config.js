@@ -1,33 +1,29 @@
-import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
+import { dependencies } from './package.json';
 
 export default {
     input: './src/index.js',
     output: {
         file: './lib/index.js',
         format: 'cjs',
-        exports: 'default'
+        exports: 'auto'
     },
     plugins: [
-        nodeResolve(),
+        nodeResolve({
+            preferBuiltins: true
+        }),
         commonjs(),
-        json(),
+        json({
+            namedExports: false
+        }),
         babel({
-            babelHelpers: 'runtime',
-            plugins: [['@babel/plugin-transform-runtime']]
+            babelHelpers: 'bundled'
         }),
         terser()
     ],
-    external: [
-        'commander',
-        'chalk',
-        'ora',
-        'fs-extra',
-        'download-git-repo',
-        'inquirer',
-        'path'
-    ]
+    external: Object.keys(dependencies).concat(['path'])
 };

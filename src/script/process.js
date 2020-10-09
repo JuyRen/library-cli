@@ -30,6 +30,7 @@ function getTemplate() {
 
 async function getDestination(projectName) {
     const destination = resolve(process.cwd(), projectName);
+    spinner.color = 'yellow';
     spinner.start(chalk.yellow('检测目录中...'));
 
     if (await fs.pathExists(destination)) {
@@ -49,6 +50,7 @@ async function quiz(projectName) {
 
 function downloadRepo(templateConfig, destination) {
     const { alias, fullName } = templateConfig;
+    spinner.color = 'yellow';
     spinner.start(
         chalk.yellow(`Wait for the remote ${fullName} template to download ...`)
     );
@@ -72,21 +74,24 @@ function downloadRepo(templateConfig, destination) {
 }
 
 function replacePlaceholder(answers, destination) {
+    spinner.color = 'yellow';
     spinner.start(chalk.yellow(`Wait for initial template ...`));
 
-    const pkg = resolve(destination, './package.json');
+    setTimeout(() => {
+        const pkg = resolve(destination, './package.json');
 
-    let files = fs.readFileSync(pkg, 'utf-8');
+        let files = fs.readFileSync(pkg, 'utf-8');
 
-    Reflect.ownKeys(answers).forEach(key => {
-        const reg = new RegExp(`{{${key}}}`, 'g');
-        const answer = answers[key];
-        files = files.replace(reg, answer);
-    });
+        Reflect.ownKeys(answers).forEach(key => {
+            const reg = new RegExp(`{{${key}}}`, 'g');
+            const answer = answers[key];
+            files = files.replace(reg, answer);
+        });
 
-    fs.writeFileSync(pkg, files, 'utf-8');
+        fs.writeFileSync(pkg, files, 'utf-8');
 
-    spinner.succeed(chalk.green(`Init template successfully`));
+        spinner.succeed(chalk.green(`Init template successfully`));
+    }, 500);
 }
 
 module.exports = {

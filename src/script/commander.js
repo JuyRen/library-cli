@@ -11,10 +11,7 @@ module.exports = function createCommander() {
 
     program
         .arguments('<projectName>')
-        .option(
-            '-t, --template <type>',
-            'develop the library with javascript or typescript'
-        )
+        .option('-t, --template <type>', 'develop the library with your type')
         .action(_projectName => {
             projectName = _projectName;
         })
