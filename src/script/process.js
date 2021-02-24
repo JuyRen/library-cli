@@ -78,16 +78,20 @@ function replacePlaceholder(answers, destination) {
     spinner.start(chalk.yellow(`Wait for initial template ...`));
 
     const pkg = resolve(destination, './package.json');
+    const rollupConfig = resolve(destination, './rollup.config.js');
 
-    let files = fs.readFileSync(pkg, 'utf-8');
+    let pkgFile = fs.readFileSync(pkg, 'utf-8');
+    let rollupConfigFile = fs.readFileSync(rollupConfig, 'utf-8');
 
     Reflect.ownKeys(answers).forEach(key => {
         const reg = new RegExp(`{{${key}}}`, 'g');
         const answer = answers[key];
-        files = files.replace(reg, answer);
+        pkgFile = pkgFile.replace(reg, answer);
+        rollupConfigFile = rollupConfigFile.replace(reg, answer);
     });
 
-    fs.writeFileSync(pkg, files, 'utf-8');
+    fs.writeFileSync(pkg, pkgFile, 'utf-8');
+    fs.writeFileSync(rollupConfig, rollupConfigFile, 'utf-8');
 
     spinner.succeed(chalk.green(`Init template successfully`));
 }

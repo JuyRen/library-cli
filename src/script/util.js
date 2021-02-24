@@ -16,12 +16,21 @@ function chalkSuccess() {
     return chalk.bgGreenBright('SUCCESS:');
 }
 
+function titleCase(str) {
+    return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
+}
+
 function getQuestions(projectName) {
     return [
         {
             message: 'What is your project name?',
             name: 'projectName',
             default: projectName
+        },
+        {
+            message: 'What is your module name? (Window.moduleName)',
+            name: 'moduleName',
+            default: projectName.split('-').map(titleCase).join('')
         },
         {
             message: 'what is the version of your project?',
