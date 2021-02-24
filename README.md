@@ -5,7 +5,7 @@
 1. 使用 npx 安装
 
 ```
-npx @juyren/library-cli <projectName> <--template (javascript | typescript)>
+npx @juyren/library-cli <projectName> --template <javascript || typescript>
 ```
 
 2. 使用全局安装
@@ -13,7 +13,7 @@ npx @juyren/library-cli <projectName> <--template (javascript | typescript)>
 ```
 npm install @juyren/library-cli -g
 
-library-cli <projectName> <--template (javascript | typescript)>
+library-cli <projectName> --template <javascript || typescript>
 ```
 
 ## 选项
