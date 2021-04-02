@@ -84,7 +84,7 @@ function replacePlaceholder(answers, destination) {
     let rollupConfigFile = fs.readFileSync(rollupConfig, 'utf-8');
 
     Reflect.ownKeys(answers).forEach(key => {
-        const reg = new RegExp(`{{${key}}}`, 'g');
+        const reg = new RegExp(`~~${key}~~`, 'g');
         const answer = answers[key];
         pkgFile = pkgFile.replace(reg, answer);
         rollupConfigFile = rollupConfigFile.replace(reg, answer);
