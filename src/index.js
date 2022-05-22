@@ -3,8 +3,9 @@ const chalk = require("chalk");
 const getDirname = require("./script/getDirname");
 const getOptions = require("./script/getOptions");
 const getDirPath = require("./script/getDirPath");
+const getAnswer = require("./script/getAnswer");
 
-function run() {
+async function run() {
   // 第一步： 接受node参数： process.argv
   const dirname = getDirname();
   if (!dirname) {
@@ -25,6 +26,10 @@ function run() {
   // 第二步: 处理参数dirname, 得到完成的路径
   const dirPath = getDirPath(dirname);
   console.log("dirPath: ", dirPath);
+
+  // 第三步: 终端提问并回答
+  const answer = await getAnswer(dirname);
+  console.log("answer: ", answer);
 }
 
 run();
