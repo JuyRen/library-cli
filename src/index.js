@@ -2,6 +2,7 @@ const chalk = require("chalk");
 
 const getDirname = require("./script/getDirname");
 const getOptions = require("./script/getOptions");
+const getDirPath = require("./script/getDirPath");
 
 function run() {
   // 第一步： 接受node参数： process.argv
@@ -20,6 +21,10 @@ function run() {
       process.exit(1);
     }
   }
+
+  // 第二步: 处理参数dirname, 得到完成的路径
+  const dirPath = getDirPath(dirname);
+  console.log("dirPath: ", dirPath);
 }
 
 run();
