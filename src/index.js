@@ -4,6 +4,7 @@ const getDirname = require("./script/getDirname");
 const getOptions = require("./script/getOptions");
 const getDirPath = require("./script/getDirPath");
 const getAnswer = require("./script/getAnswer");
+const mkdirByOptions = require("./script/mkdirByOptions");
 
 async function run() {
   // 第一步： 接受node参数： process.argv
@@ -12,7 +13,9 @@ async function run() {
     console.log(chalk.red("请输入项目名称!"));
     process.exit(1);
   }
-  const { template } = getOptions();
+  const options = getOptions();
+
+  const { template } = options;
   if (!template) {
     console.log(chalk.red("请输入代码模板"));
     process.exit(1);
@@ -28,8 +31,11 @@ async function run() {
   console.log("dirPath: ", dirPath);
 
   // 第三步: 终端提问并回答
-  const answer = await getAnswer(dirname);
-  console.log("answer: ", answer);
+  const answers = await getAnswer(dirname);
+  console.log("answers: ", answers);
+
+  // 第四步: 创建文件夹，拉去模板并替换答案
+  mkdirByOptions(dirPath, options, answers);
 }
 
 run();

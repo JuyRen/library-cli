@@ -9,7 +9,7 @@ async function getAnswer(projectName) {
   });
 
   const answers = {
-    name: projectName,
+    projectName: projectName,
     version: "1.0.0",
   };
 
@@ -21,10 +21,10 @@ async function getAnswer(projectName) {
     });
   };
 
-  const nameAns = await rlPromise(
-    `你的项目名称叫什么? (默认值: ${answers.name}): `
+  const projectNameAns = await rlPromise(
+    `你的项目名称叫什么? (默认值: ${answers.projectName}): `
   );
-  if (nameAns) answers.name = nameAns;
+  if (projectNameAns) answers.projectName = projectNameAns;
 
   const versionAns = await rlPromise(
     `项目版本？(默认值: ${answers.version}): `
