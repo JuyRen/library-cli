@@ -5,6 +5,7 @@ const getOptions = require("./script/getOptions");
 const getDirPath = require("./script/getDirPath");
 const getAnswer = require("./script/getAnswer");
 const mkdirByOptions = require("./script/mkdirByOptions");
+const runShell = require("./script/runShell");
 
 async function run() {
   // 第一步： 接受node参数： process.argv
@@ -35,7 +36,10 @@ async function run() {
   console.log("answers: ", answers);
 
   // 第四步: 创建文件夹，拉去模板并替换答案
-  mkdirByOptions(dirPath, options, answers);
+  await mkdirByOptions(dirPath, options, answers);
+
+  // 第五步: 进入文件夹，运行yarn
+  runShell(dirPath);
 }
 
 run();
