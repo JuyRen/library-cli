@@ -1,17 +1,14 @@
 {
-  "name": "cli-demo",
-  "version": "1.0.0",
+  "name": "my-cli",
+  "version": "1.0.1",
   "description": "",
   "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.0",
-    "ora": "^5.1.0",
-    "download-git-repo": "^3.0.2"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.18.0",
-    "@babel/preset-env": "^7.18.0"
+    "commander": "^9.3.0",
+    "download-git-repo": "^3.0.2",
+    "ora": "^5.1.0"
   }
 }

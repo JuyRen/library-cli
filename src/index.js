@@ -1,45 +1,27 @@
-const chalk = require("chalk");
+const { program } = require("commander");
 
-const getDirname = require("./script/getDirname");
-const getOptions = require("./script/getOptions");
-const getDirPath = require("./script/getDirPath");
-const getAnswer = require("./script/getAnswer");
-const mkdirByOptions = require("./script/mkdirByOptions");
-const runShell = require("./script/runShell");
+const pkg = require("../package.json");
 
 async function run() {
-  // 第一步： 接受node参数： process.argv
-  const dirname = getDirname();
-  if (!dirname) {
-    console.log(chalk.red("请输入项目名称!"));
-    process.exit(1);
-  }
-  const options = getOptions();
+  let dirName = "";
 
-  const { template } = options;
-  if (!template) {
-    console.log(chalk.red("请输入代码模板"));
-    process.exit(1);
-  } else {
-    if (!["ts", "js"].includes(template)) {
-      console.log(chalk.red("请输入正确的代码模板 （ts js）"));
-      process.exit(1);
-    }
-  }
+  // <>必填， []选填
+  // 若不填，commander会报错
+  program
+    .name(pkg.name) // 命令名称
+    .usage("<projectName> --template <ts|js>") // 使用方式说明
+    .version(pkg.version, "-v, --version", "version描述")
+    .argument("<projectName>", "要创建的文件夹名")
+    .option("-temp, --template <type>", "选择拉取的代码模板类型ts|js", "ts")
+    .action((projectName, d) => {
+      dirName = projectName;
+    })
+    .parse();
 
-  // 第二步: 处理参数dirname, 得到完成的路径
-  const dirPath = getDirPath(dirname);
-  console.log("dirPath: ", dirPath);
-
-  // 第三步: 终端提问并回答
-  const answers = await getAnswer(dirname);
-  console.log("answers: ", answers);
-
-  // 第四步: 创建文件夹，拉去模板并替换答案
-  await mkdirByOptions(dirPath, options, answers);
-
-  // 第五步: 进入文件夹，运行yarn
-  runShell(dirPath);
+  const options = program.opts();
+  const template = options.template;
+  console.log("dirName: ", dirName);
+  console.log("template: ", template);
 }
 
 run();
