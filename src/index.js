@@ -3,6 +3,7 @@ const fs = require("fs");
 const { program } = require("commander");
 const inquirer = require("inquirer");
 const ncp = require("ncp").ncp;
+const spawn = require("cross-spawn");
 
 const pkg = require("../package.json");
 
@@ -76,6 +77,12 @@ async function run() {
         console.log("ncp出错了", err);
         process.exit(1);
       }
+
+      console.log("开始安装依赖...");
+      spawn.sync("npm", ["i"], {
+        cwd: dirPath,
+        stdio: "inherit",
+      });
     }
   );
 }
