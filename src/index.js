@@ -2,6 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const { program } = require("commander");
 const inquirer = require("inquirer");
+const ncp = require("ncp").ncp;
 
 const pkg = require("../package.json");
 
@@ -63,6 +64,20 @@ async function run() {
   ]);
 
   console.log("answers: ", answers);
+
+  ncp(
+    `./template/${template}`,
+    dirPath,
+    {
+      rename: (filename) => filename.replace(/\.example$/, ""),
+    },
+    (err) => {
+      if (err) {
+        console.log("ncp出错了", err);
+        process.exit(1);
+      }
+    }
+  );
 }
 
 run();
