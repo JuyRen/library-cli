@@ -13,6 +13,16 @@ async function getAnswer(projectName) {
     version: "1.0.0",
   };
 
+  // const tempAnswers = {};
+
+  // rl.question("问题1：", (ans1) => {
+  //   tempAnswers.ans1 = ans1;
+
+  //   rl.question('问题2：', (ans2) => {
+  //   tempAnswers.ans2 = ans2;
+  //   })
+  // });
+
   const rlPromise = (question) => {
     return new Promise((resolve, reject) => {
       rl.question(question, (answer) => {
