@@ -1,3 +1,5 @@
+const path = require("path");
+const fs = require("fs");
 const { program } = require("commander");
 const inquirer = require("inquirer");
 
@@ -23,6 +25,13 @@ async function run() {
   const template = options.template;
   console.log("dirName: ", dirName);
   console.log("template: ", template);
+
+  const dirPath = path.resolve(process.cwd(), dirName);
+
+  if (fs.existsSync(dirPath)) {
+    process.exit(1);
+  }
+  console.log("dirPath: ", dirPath);
 
   const answers = await inquirer.prompt([
     {
