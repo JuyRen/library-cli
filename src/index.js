@@ -1,4 +1,5 @@
 const { program } = require("commander");
+const inquirer = require("inquirer");
 
 const pkg = require("../package.json");
 
@@ -22,6 +23,37 @@ async function run() {
   const template = options.template;
   console.log("dirName: ", dirName);
   console.log("template: ", template);
+
+  const answers = await inquirer.prompt([
+    {
+      message: "What is your project name?",
+      name: "projectName",
+      default: dirName,
+    },
+    {
+      message: "what is the version of your project?",
+      name: "version",
+      default: "1.0.0",
+    },
+    {
+      message: "How do you describe your project?",
+      name: "description",
+    },
+    {
+      message: "What is the author of your project?",
+      name: "author",
+    },
+    {
+      message: "What keywords do you want to set for your project?",
+      name: "keywords",
+    },
+    {
+      message: "What is the git repository of your project",
+      name: "git",
+    },
+  ]);
+
+  console.log("answers: ", answers);
 }
 
 run();
